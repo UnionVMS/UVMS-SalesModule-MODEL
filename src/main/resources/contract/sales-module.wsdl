@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions name="sales-module"
+                  targetNamespace="urn:module.sales.schema.fisheries.ec.europa.eu:v1"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+>
+    <wsdl:documentation>Version: 1.0</wsdl:documentation>
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import namespace="eu.europa.ec.fisheries.schema.sales"
+                        schemaLocation="xsd/SalesModule_1p0.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+</wsdl:definitions>

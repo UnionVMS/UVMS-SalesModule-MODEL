@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== -->
+<!-- ===== BE Entity Schema Module ===== -->
+<!-- ====================================================================== -->
+<!--
+Schema agency:  Vlaamse Overheid
+Schema version: 1.0
+Schema date:    25July2016
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:fluxSales="eu.europa.ec.fisheries.schema.sales.flux"
+            xmlns:ccts="urn:un:unece:uncefact:documentation:standard:CoreComponentsTechnicalSpecification:2"
+            targetNamespace="eu.europa.ec.fisheries.schema.sales"
+            xmlns:bat="eu.europa.ec.fisheries.schema.sales"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified"
+            version="1.0">
+    <!-- ======================================================================= -->
+    <!-- ===== Imports                                                     ===== -->
+    <!-- ======================================================================= -->
+    <!-- ======================================================================= -->
+    <!-- ===== Import of FLUX Sales Messages                               ===== -->
+    <!-- ======================================================================= -->
+    <xsd:import namespace="eu.europa.ec.fisheries.schema.sales.flux"
+                schemaLocation="FLUXSalesMessage_3p1.xsd"/>
+
+    <!-- ======================================================================= -->
+    <!-- ===== Import of Unqualified Data Type Schema Module               ===== -->
+    <!-- ======================================================================= -->
+    <xsd:import namespace="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:20"
+                schemaLocation="UnqualifiedDataType_20p0.xsd"/>
+    <!-- ======================================================================= -->
+    <!-- ===== Import of Qualified Data Type Schema Module                 ===== -->
+    <!-- ======================================================================= -->
+    <xsd:import namespace="urn:un:unece:uncefact:data:Standard:QualifiedDataType:20"
+                schemaLocation="QualifiedDataType_20p0.xsd"/>
+    <!-- ======================================================================= -->
+    <!-- ===== Element Declarations                                        ===== -->
+    <!-- ======================================================================= -->
+    <xsd:element name="Report" type="bat:ReportType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+                <ccts:UniqueID>BE00000005</ccts:UniqueID>
+                <ccts:Acronym>RE</ccts:Acronym>
+                <ccts:DictionaryEntryName>Report</ccts:DictionaryEntryName>
+                <ccts:Version>1.0</ccts:Version>
+                <ccts:Definition>Wrapper combining report data from FLUX reports and member state specific report data</ccts:Definition>
+                <ccts:ObjectClassTerm>Report</ccts:ObjectClassTerm>
+                <ccts:ObjectClassQualifierTerm>Sales</ccts:ObjectClassQualifierTerm>
+                <ccts:BusinessProcessContextValue>BEL</ccts:BusinessProcessContextValue>
+                <ccts:GeopoliticalOrRegionContextValue>In All Contexts</ccts:GeopoliticalOrRegionContextValue>
+                <ccts:OfficialConstraintContextValue>None</ccts:OfficialConstraintContextValue>
+                <ccts:ProductContextValue>In All Contexts</ccts:ProductContextValue>
+                <ccts:IndustryContextValue>Fisheries</ccts:IndustryContextValue>
+                <ccts:BusinessProcessRoleContextValue>In All Contexts</ccts:BusinessProcessRoleContextValue>
+                <ccts:SupportingRoleContextValue>In All Contexts</ccts:SupportingRoleContextValue>
+                <ccts:SystemCapabilitiesContextValue>In All Contexts</ccts:SystemCapabilitiesContextValue>
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <!-- ================================================================== -->
+    <!-- ===== Type Definitions                                       ===== -->
+    <!-- ================================================================== -->
+    <xsd:complexType name="ReportType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+                <ccts:UniqueID>BE00000005</ccts:UniqueID>
+                <ccts:Acronym>AS</ccts:Acronym>
+                <ccts:DictionaryEntryName>Sales. Report.</ccts:DictionaryEntryName>
+                <ccts:Version>1.0</ccts:Version>
+                <ccts:Definition>Wrapper combining report data from FLUX reports and member state specific report data</ccts:Definition>
+                <ccts:ObjectClassTerm>Report</ccts:ObjectClassTerm>
+                <ccts:ObjectClassQualifierTerm>Sales</ccts:ObjectClassQualifierTerm>
+                <ccts:BusinessProcessContextValue>BEL</ccts:BusinessProcessContextValue>
+                <ccts:GeopoliticalOrRegionContextValue>In All Contexts</ccts:GeopoliticalOrRegionContextValue>
+                <ccts:OfficialConstraintContextValue>None</ccts:OfficialConstraintContextValue>
+                <ccts:ProductContextValue>In All Contexts</ccts:ProductContextValue>
+                <ccts:IndustryContextValue>Fisheries</ccts:IndustryContextValue>
+                <ccts:BusinessProcessRoleContextValue>In All Contexts</ccts:BusinessProcessRoleContextValue>
+                <ccts:SupportingRoleContextValue>In All Contexts</ccts:SupportingRoleContextValue>
+                <ccts:SystemCapabilitiesContextValue>In All Contexts</ccts:SystemCapabilitiesContextValue>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="FLUXSalesReportMessage" type="fluxSales:FLUXSalesReportMessageType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">
+                        <ccts:UniqueID>UN04000104</ccts:UniqueID>
+                        <ccts:Acronym>ASFR</ccts:Acronym>
+                        <ccts:Name>FLUXSalesReportMessage</ccts:Name>
+                        <ccts:Version>1.0</ccts:Version>
+                        <ccts:Definition>A Fisheries Language for Universal eXchange (FLUX) message for reporting sales
+                            notes, takeovers or transport document information.
+                        </ccts:Definition>
+                        <ccts:BusinessProcessContextValue>FLUX</ccts:BusinessProcessContextValue>
+                        <ccts:GeopoliticalOrRegionContextValue>In All Contexts</ccts:GeopoliticalOrRegionContextValue>
+                        <ccts:OfficialConstraintContextValue>None</ccts:OfficialConstraintContextValue>
+                        <ccts:ProductContextValue>In All Contexts</ccts:ProductContextValue>
+                        <ccts:IndustryContextValue>Fisheries</ccts:IndustryContextValue>
+                        <ccts:BusinessProcessRoleContextValue>In All Contexts</ccts:BusinessProcessRoleContextValue>
+                        <ccts:SupportingRoleContextValue>In All Contexts</ccts:SupportingRoleContextValue>
+                        <ccts:SystemCapabilitiesContextValue>In All Contexts</ccts:SystemCapabilitiesContextValue>
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="AuctionSale" type="bat:AuctionSaleType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">
+                        <ccts:UniqueID>BE00000001</ccts:UniqueID>
+                        <ccts:Acronym>AS</ccts:Acronym>
+                        <ccts:DictionaryEntryName>Auction_Sale</ccts:DictionaryEntryName>
+                        <ccts:Version>1.0</ccts:Version>
+                        <ccts:Definition>Specific data for auction sales</ccts:Definition>
+                        <ccts:ObjectClassTerm>Report</ccts:ObjectClassTerm>
+                        <ccts:ObjectClassQualifierTerm>Sales</ccts:ObjectClassQualifierTerm>
+                        <ccts:BusinessProcessContextValue>BEL</ccts:BusinessProcessContextValue>
+                        <ccts:GeopoliticalOrRegionContextValue>In All Contexts</ccts:GeopoliticalOrRegionContextValue>
+                        <ccts:OfficialConstraintContextValue>None</ccts:OfficialConstraintContextValue>
+                        <ccts:ProductContextValue>In All Contexts</ccts:ProductContextValue>
+                        <ccts:IndustryContextValue>Fisheries</ccts:IndustryContextValue>
+                        <ccts:BusinessProcessRoleContextValue>In All Contexts</ccts:BusinessProcessRoleContextValue>
+                        <ccts:SupportingRoleContextValue>In All Contexts</ccts:SupportingRoleContextValue>
+                        <ccts:SystemCapabilitiesContextValue>In All Contexts</ccts:SystemCapabilitiesContextValue>
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="SalesCategoryType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+                <ccts:UniqueID>BE00000004</ccts:UniqueID>
+                <ccts:Acronym>ASSCT</ccts:Acronym>
+                <ccts:DictionaryEntryName>BEL_Sales. Sales Category Type</ccts:DictionaryEntryName>
+                <ccts:Version>1.0</ccts:Version>
+                <ccts:Definition>The code specifying the type of auction.</ccts:Definition>
+                <ccts:ObjectClassTerm>Report</ccts:ObjectClassTerm>
+                <ccts:ObjectClassQualifierTerm>Sales</ccts:ObjectClassQualifierTerm>
+                <ccts:BusinessProcessContextValue>BEL</ccts:BusinessProcessContextValue>
+                <ccts:GeopoliticalOrRegionContextValue>In All Contexts</ccts:GeopoliticalOrRegionContextValue>
+                <ccts:OfficialConstraintContextValue>None</ccts:OfficialConstraintContextValue>
+                <ccts:ProductContextValue>In All Contexts</ccts:ProductContextValue>
+                <ccts:IndustryContextValue>Fisheries</ccts:IndustryContextValue>
+                <ccts:BusinessProcessRoleContextValue>In All Contexts</ccts:BusinessProcessRoleContextValue>
+                <ccts:SupportingRoleContextValue>In All Contexts</ccts:SupportingRoleContextValue>
+                <ccts:SystemCapabilitiesContextValue>In All Contexts</ccts:SystemCapabilitiesContextValue>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="FIRST_SALE"/>
+            <xsd:enumeration value="NEGOTIATED_SALE"/>
+            <xsd:enumeration value="VARIOUS_SUPPLY"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="AuctionSaleType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+                <ccts:UniqueID>BE00000001</ccts:UniqueID>
+                <ccts:Acronym>AS</ccts:Acronym>
+                <ccts:DictionaryEntryName>BEL_Sales. Details</ccts:DictionaryEntryName>
+                <ccts:Version>1.0</ccts:Version>
+                <ccts:Definition>Specifieke Belgische verkoopspecificaties</ccts:Definition>
+                <ccts:ObjectClassTerm>Report</ccts:ObjectClassTerm>
+                <ccts:ObjectClassQualifierTerm>Sales</ccts:ObjectClassQualifierTerm>
+                <ccts:BusinessProcessContextValue>BEL</ccts:BusinessProcessContextValue>
+                <ccts:GeopoliticalOrRegionContextValue>In All Contexts</ccts:GeopoliticalOrRegionContextValue>
+                <ccts:OfficialConstraintContextValue>None</ccts:OfficialConstraintContextValue>
+                <ccts:ProductContextValue>In All Contexts</ccts:ProductContextValue>
+                <ccts:IndustryContextValue>Fisheries</ccts:IndustryContextValue>
+                <ccts:BusinessProcessRoleContextValue>In All Contexts</ccts:BusinessProcessRoleContextValue>
+                <ccts:SupportingRoleContextValue>In All Contexts</ccts:SupportingRoleContextValue>
+                <ccts:SystemCapabilitiesContextValue>In All Contexts</ccts:SystemCapabilitiesContextValue>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="CountryCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">
+                        <ccts:UniqueID>BE00000002</ccts:UniqueID>
+                        <ccts:Acronym>ASCC</ccts:Acronym>
+                        <ccts:DictionaryEntryName>Auction_Sale. Country Code. Code</ccts:DictionaryEntryName>
+                        <ccts:Version>1.0</ccts:Version>
+                        <ccts:Definition>The code specifying a country for this auction.</ccts:Definition>
+                        <ccts:Cardinality>0..1</ccts:Cardinality>
+                        <ccts:ObjectClassTerm>Auctioning Country</ccts:ObjectClassTerm>
+                        <ccts:ObjectClassQualifierTerm></ccts:ObjectClassQualifierTerm>
+                        <ccts:PropertyTerm>Auctioning Country</ccts:PropertyTerm>
+                        <ccts:PrimaryRepresentationTerm>Code</ccts:PrimaryRepresentationTerm>
+                        <ccts:BusinessProcessContextValue>BEL</ccts:BusinessProcessContextValue>
+                        <ccts:GeopoliticalOrRegionContextValue>In All Contexts</ccts:GeopoliticalOrRegionContextValue>
+                        <ccts:OfficialConstraintContextValue>None</ccts:OfficialConstraintContextValue>
+                        <ccts:ProductContextValue>In All Contexts</ccts:ProductContextValue>
+                        <ccts:IndustryContextValue>Fisheries</ccts:IndustryContextValue>
+                        <ccts:BusinessProcessRoleContextValue>In All Contexts</ccts:BusinessProcessRoleContextValue>
+                        <ccts:SupportingRoleContextValue>In All Contexts</ccts:SupportingRoleContextValue>
+                        <ccts:SystemCapabilitiesContextValue>In All Contexts</ccts:SystemCapabilitiesContextValue>
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="SalesCategory" type="bat:SalesCategoryType" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">
+                        <ccts:UniqueID>BE00000003</ccts:UniqueID>
+                        <ccts:Acronym>ASSC</ccts:Acronym>
+                        <ccts:DictionaryEntryName>Auction_Sale. Sales Category</ccts:DictionaryEntryName>
+                        <ccts:Version>1.0</ccts:Version>
+                        <ccts:Definition>The code specifying the type of auction.</ccts:Definition>
+                        <ccts:Cardinality>1</ccts:Cardinality>
+                        <ccts:ObjectClassTerm>Sales Type</ccts:ObjectClassTerm>
+                        <ccts:ObjectClassQualifierTerm>Sales</ccts:ObjectClassQualifierTerm>
+                        <ccts:PropertyTerm>Type</ccts:PropertyTerm>
+                        <ccts:PrimaryRepresentationTerm>Text</ccts:PrimaryRepresentationTerm>
+                        <ccts:BusinessProcessContextValue>BEL</ccts:BusinessProcessContextValue>
+                        <ccts:GeopoliticalOrRegionContextValue>In All Contexts</ccts:GeopoliticalOrRegionContextValue>
+                        <ccts:OfficialConstraintContextValue>None</ccts:OfficialConstraintContextValue>
+                        <ccts:ProductContextValue>In All Contexts</ccts:ProductContextValue>
+                        <ccts:IndustryContextValue>Fisheries</ccts:IndustryContextValue>
+                        <ccts:BusinessProcessRoleContextValue>In All Contexts</ccts:BusinessProcessRoleContextValue>
+                        <ccts:SupportingRoleContextValue>In All Contexts</ccts:SupportingRoleContextValue>
+                        <ccts:SystemCapabilitiesContextValue>In All Contexts</ccts:SystemCapabilitiesContextValue>
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ReportQuery">
+        <xsd:sequence>
+            <xsd:element name="filters" type="bat:ReportQueryFilter" minOccurs="0"/>
+            <xsd:element name="paging" type="bat:Paging" minOccurs="0"/>
+            <xsd:element name="sorting" type="bat:ReportQuerySorting" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ReportQueryFilter">
+        <xsd:sequence>
+            <xsd:element name="excludeFluxReportIds" type="xsd:string" minOccurs="0"
+                         maxOccurs="unbounded"/>
+            <xsd:element name="flagState" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="includeFluxReportIds" type="xsd:string" minOccurs="0"
+                         maxOccurs="unbounded"/>
+            <xsd:element name="landingPort" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="landingCountry" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="salesCategory" type="bat:SalesCategoryType" minOccurs="0"/>
+            <xsd:element name="salesEndDate" type="xsd:dateTime" minOccurs="0"/>
+            <xsd:element name="salesLocation" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="salesStartDate" type="xsd:dateTime" minOccurs="0"/>
+            <xsd:element name="allSpecies" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="anySpecies" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="vesselExtIds" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="vesselName" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="tripId" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="Paging">
+        <xsd:sequence>
+            <xsd:element name="itemsPerPage" type="xsd:int"/>
+            <xsd:element name="page" type="xsd:int"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ReportQuerySorting">
+        <xsd:sequence>
+            <xsd:element name="direction" type="bat:SortDirection" minOccurs="0"/>
+            <xsd:element name="field" type="bat:ReportQuerySortField" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="SortDirection">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ASCENDING"/>
+            <xsd:enumeration value="DESCENDING"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="ReportQuerySortField">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="FLAG_STATE"/>
+            <xsd:enumeration value="VESSEL_NAME"/>
+            <xsd:enumeration value="SALES_DATE"/>
+            <xsd:enumeration value="SALES_LOCATION"/>
+            <xsd:enumeration value="LANDING_DATE"/>
+            <xsd:enumeration value="LANDING_PORT"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="SavedSearchGroup">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" minOccurs="0"/>
+            <xsd:element name="fields" type="bat:SavedSearchGroupField" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="name" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="user" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="SavedSearchGroupField">
+        <xsd:sequence>
+            <xsd:element name="key" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="value" type="xsd:string" minOccurs="1" maxOccurs="1" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SalesBaseRequest" abstract="true">
+        <xsd:sequence>
+            <xsd:element name="method" type="bat:SalesModuleMethod"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="SalesModuleMethod">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="QUERY"/>
+            <xsd:enumeration value="REPORT"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:element name="SalesReportRequest">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="bat:SalesBaseRequest">
+                    <xsd:sequence>
+                        <xsd:element name="report" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="SalesQueryRequest">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="bat:SalesBaseRequest">
+                    <xsd:sequence>
+                        <xsd:element name="query" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

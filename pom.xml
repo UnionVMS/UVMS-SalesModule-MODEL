@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>eu.europa.ec.fisheries.uvms.sales</groupId>
+    <artifactId>sales-model</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+	
+    <name>${project.artifactId}</name>
+    
+    <description>Maven project-archetype for UnionVMS Model</description>
+    
+    <properties>
+        <junit.version>4.10</junit.version>
+        <mockito.version>1.9.5</mockito.version>
+        <javaee.version>7.0</javaee.version>
+        <hibernate.version>4.3.5.Final</hibernate.version>
+        <slf4j.version>1.7.12</slf4j.version>
+        <logback.version>1.1.3</logback.version>
+        <logback.core.version>1.1.3</logback.core.version>
+		<jaxb2.basics.version>0.9.5</jaxb2.basics.version>
+        <joda.time.version>2.9.7</joda.time.version>
+    </properties>
+	
+	<build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+	
+	<profiles>
+        <profile>
+            <id>generate-from-wsdl</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <version>2.6.1</version>
+                        <executions>
+                            <execution>
+                                <id>clean-generated-sources</id>
+                                <phase>clean</phase>
+                                <goals>
+                                    <goal>clean</goal>
+                                </goals>
+                                <configuration>
+                                    <filesets>
+                                        <fileset>
+                                            <directory>${basedir}/src/main/java/eu/europa/ec/fisheries/schema
+                                            </directory>
+                                        </fileset>
+                                    </filesets>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-codegen-plugin</artifactId>
+                        <version>2.7.6</version>
+                        <executions>
+                            <execution>
+                                <id>generate-sales-module</id>
+                                <phase>generate-sources</phase>
+                                <configuration>
+                                    <sourceRoot>${basedir}/src/main/java/</sourceRoot>
+                                    <wsdlOptions>
+                                        <wsdlOption>
+                                            <wsdl>${basedir}/src/main/resources/contract/sales-module.wsdl</wsdl>
+                                            <bindingFiles>
+                                                <bindingFile>${basedir}/src/main/resources/bindings/sales-module-bindings.xml</bindingFile>
+                                            </bindingFiles>
+                                            <extraargs>
+                                                <extraarg>-xjc-XhashCode</extraarg>
+                                                <extraarg>-xjc-Xequals</extraarg>
+                                                <extraarg>-xjc-XtoString</extraarg>
+                                                <extraarg>-xjc-Xfluent-api</extraarg>
+                                            </extraargs>
+                                        </wsdlOption>
+                                        <wsdlOption>
+                                            <wsdl>${basedir}/src/main/resources/contract/ecb-proxy.wsdl</wsdl>
+                                            <bindingFiles>
+                                                <bindingFile>${basedir}/src/main/resources/bindings/ecb-proxy-bindings.xml</bindingFile>
+                                            </bindingFiles>
+                                            <extraargs>
+                                                <extraarg>-xjc-XhashCode</extraarg>
+                                                <extraarg>-xjc-Xequals</extraarg>
+                                                <extraarg>-xjc-XtoString</extraarg>
+                                                <extraarg>-xjc-Xfluent-api</extraarg>
+                                            </extraargs>
+                                        </wsdlOption>
+                                    </wsdlOptions>
+                                </configuration>
+                                <goals>
+                                    <goal>wsdl2java</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.jvnet.jaxb2_commons</groupId>
+                                <artifactId>jaxb2-basics</artifactId>
+                                <version>${jaxb2.basics.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.jvnet.jaxb2_commons</groupId>
+                                <artifactId>jaxb2-fluent-api</artifactId>
+                                <version>3.0</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+	</profiles>
+    
+    <dependencies>
+		<dependency>
+            <groupId>org.jvnet.jaxb2_commons</groupId>
+            <artifactId>jaxb2-basics</artifactId>
+            <version>${jaxb2.basics.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${javaee.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda.time.version}</version>
+        </dependency>
+        
+        <!-- LOGGING DEPENDENCIES -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    
+    <distributionManagement>
+        <repository>
+            <id>hav.releases</id>
+            <name>HaV release repo</name>
+            <url>http://livm06p:9080/nexus/content/repositories/releases/</url>
+            <layout>default</layout>
+        </repository>
+        <snapshotRepository>
+            <id>hav.snapshots</id>
+            <name>HaV release repo</name>
+            <url>http://livm06p:9080/nexus/content/repositories/snapshots/</url>
+            <layout>default</layout>
+        </snapshotRepository>
+    </distributionManagement>
+    
+    <scm>
+        <connection>scm:svn:http://svn/svn/unionvms/branches/dev/Modules/YOUR_MODULE_NAME/DB</connection>
+    </scm>
+           
+</project>

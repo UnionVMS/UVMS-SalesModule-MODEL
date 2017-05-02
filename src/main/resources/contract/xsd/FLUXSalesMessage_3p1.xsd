@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+            targetNamespace="eu.europa.ec.fisheries.schema.sales.flux" version="3.1"
+            xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:20"
+            xmlns:rsm="eu.europa.ec.fisheries.schema.sales.flux"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:20"
+                schemaLocation="UnqualifiedDataType_20p0.xsd"/>
+    <xsd:import namespace="urn:un:unece:uncefact:data:Standard:QualifiedDataType:20"
+                schemaLocation="QualifiedDataType_20p0.xsd"/>
+    <xsd:import namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:20"
+                schemaLocation="ReusableAggregateBusinessInformationEntity_20p0.xsd"/>
+
+    <xsd:element name="FLUXSalesReportMessage" type="rsm:FLUXSalesReportMessageType"/>
+    <xsd:complexType name="FLUXSalesReportMessageType">
+        <xsd:sequence>
+            <xsd:element minOccurs="1" name="FLUXReportDocument" type="ram:FLUXReportDocumentType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="SalesReport" type="ram:SalesReportType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="FLUXSalesQueryMessage" type="rsm:FLUXSalesQueryMessageType"/>
+    <xsd:complexType name="FLUXSalesQueryMessageType">
+        <xsd:sequence>
+            <xsd:element minOccurs="1" name="SalesQuery" type="ram:SalesQueryType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="FLUXSalesResponseMessage" type="rsm:FLUXSalesResponseMessageType" />
+    <xsd:complexType name="FLUXSalesResponseMessageType">
+        <xsd:sequence>
+            <xsd:element minOccurs="1" name="FLUXResponseDocument" type="ram:FLUXResponseDocumentType" />
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="SalesReport" type="ram:SalesReportType" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>
