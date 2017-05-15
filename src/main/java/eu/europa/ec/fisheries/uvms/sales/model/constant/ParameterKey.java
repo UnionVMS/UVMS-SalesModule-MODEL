@@ -13,7 +13,7 @@ package eu.europa.ec.fisheries.uvms.sales.model.constant;
 
 
 public enum ParameterKey {
-    COUNTRY_OF_HOST("sales.country_of_host");
+    FLUX_LOCAL_NATION_CODE("flux_local_nation_code");
 
     private final String key;
 
