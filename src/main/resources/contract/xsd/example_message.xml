@@ -52,6 +52,11 @@
                             <urn1:RelatedVesselTransportMeans>
                                 <urn1:ID schemeID="CFR">CFR</urn1:ID>
                                 <urn1:SpecifiedRegistrationEvent>
+                                    <urn1:RelatedRegistrationLocation>
+                                        <urn1:CountryID>
+                                            BEL
+                                        </urn1:CountryID>
+                                    </urn1:RelatedRegistrationLocation>
                                 </urn1:SpecifiedRegistrationEvent>
                                 <urn1:SpecifiedContactParty>
                                     <urn1:RoleCode>ROLE</urn1:RoleCode>
