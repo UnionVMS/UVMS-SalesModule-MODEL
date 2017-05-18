@@ -319,6 +319,7 @@ Schema date:    25July2016
                 <xsd:extension base="bat:SalesBaseRequest">
                     <xsd:sequence>
                         <xsd:element name="report" type="xsd:string"/>
+                        <xsd:element name="pluginToSendResponseThrough" type="xsd:string" minOccurs="1" maxOccurs="1" />
                     </xsd:sequence>
                 </xsd:extension>
             </xsd:complexContent>
@@ -329,7 +330,8 @@ Schema date:    25July2016
             <xsd:complexContent>
                 <xsd:extension base="bat:SalesBaseRequest">
                     <xsd:sequence>
-                        <xsd:element name="query" type="xsd:string"/>
+                        <xsd:element name="query" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                        <xsd:element name="pluginToSendResponseThrough" type="xsd:string" minOccurs="1" maxOccurs="1" />
                     </xsd:sequence>
                 </xsd:extension>
             </xsd:complexContent>
