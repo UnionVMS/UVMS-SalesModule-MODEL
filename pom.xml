@@ -22,6 +22,7 @@
 		<jaxb2.basics.version>0.9.5</jaxb2.basics.version>
         <joda.time.version>2.9.7</joda.time.version>
         <guava.version>21.0</guava.version>
+        <rules.model.version>3.0.5-SNAPSHOT</rules.model.version>
     </properties>
 	
 	<build>
@@ -175,6 +176,12 @@
             <artifactId>mockito-all</artifactId>
             <version>${mockito.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>eu.europa.ec.fisheries.uvms.rules</groupId>
+            <artifactId>rules-model</artifactId>
+            <version>${rules.model.version}</version>
+            <classifier>date</classifier>
         </dependency>
     </dependencies>
     

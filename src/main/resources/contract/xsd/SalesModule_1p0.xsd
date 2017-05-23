@@ -9,6 +9,7 @@ Schema date:    25July2016
 -->
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:fluxSales="eu.europa.ec.fisheries.schema.sales.flux"
+            xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:20"
             xmlns:ccts="urn:un:unece:uncefact:documentation:standard:CoreComponentsTechnicalSpecification:2"
             targetNamespace="eu.europa.ec.fisheries.schema.sales"
             xmlns:bat="eu.europa.ec.fisheries.schema.sales"
@@ -304,12 +305,29 @@ Schema date:    25July2016
     <xsd:complexType name="SalesBaseRequest" abstract="true">
         <xsd:sequence>
             <xsd:element name="method" type="bat:SalesModuleMethod"/>
+            <xsd:element name="validationResult" type="ram:ValidationQualityAnalysisType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="messageValidationStatus" type="bat:FLUXGPResponse" />
         </xsd:sequence>
     </xsd:complexType>
     <xsd:simpleType name="SalesModuleMethod">
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="QUERY"/>
             <xsd:enumeration value="REPORT"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="FLUXGPValidationType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ERR"/>
+            <xsd:enumeration value="WAR"/>
+            <xsd:enumeration value="IGN"/>
+            <xsd:enumeration value="OK"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="FLUXGPResponse">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="OK"/>
+            <xsd:enumeration value="WOK"/>
+            <xsd:enumeration value="NOK"/>
         </xsd:restriction>
     </xsd:simpleType>
 
