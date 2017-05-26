@@ -307,12 +307,14 @@ Schema date:    25July2016
             <xsd:element name="method" type="bat:SalesModuleMethod"/>
             <xsd:element name="validationResult" type="ram:ValidationQualityAnalysisType" minOccurs="0" maxOccurs="unbounded" />
             <xsd:element name="messageValidationStatus" type="bat:FLUXGPResponse" />
+            <xsd:element name="pluginToSendResponseThrough" type="xsd:string" minOccurs="1" maxOccurs="1" />
         </xsd:sequence>
     </xsd:complexType>
     <xsd:simpleType name="SalesModuleMethod">
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="QUERY"/>
             <xsd:enumeration value="REPORT"/>
+            <xsd:enumeration value="INVALID_MESSAGE"/>
         </xsd:restriction>
     </xsd:simpleType>
     <xsd:simpleType name="FLUXGPValidationType">
@@ -337,7 +339,6 @@ Schema date:    25July2016
                 <xsd:extension base="bat:SalesBaseRequest">
                     <xsd:sequence>
                         <xsd:element name="report" type="xsd:string"/>
-                        <xsd:element name="pluginToSendResponseThrough" type="xsd:string" minOccurs="1" maxOccurs="1" />
                     </xsd:sequence>
                 </xsd:extension>
             </xsd:complexContent>
@@ -349,7 +350,18 @@ Schema date:    25July2016
                 <xsd:extension base="bat:SalesBaseRequest">
                     <xsd:sequence>
                         <xsd:element name="query" type="xsd:string" minOccurs="1" maxOccurs="1" />
-                        <xsd:element name="pluginToSendResponseThrough" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="RespondToInvalidMessageRequest">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="bat:SalesBaseRequest">
+                    <xsd:sequence>
+                        <xsd:element name="sender" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                        <xsd:element name="messageGuid" type="xsd:string" minOccurs="1" maxOccurs="1" />
                     </xsd:sequence>
                 </xsd:extension>
             </xsd:complexContent>
