@@ -48,4 +48,20 @@ public interface ReportDomainModel {
      */
     long count(ReportQuery fluxReportQuery);
 
+    /**
+     *  Retrieves all sales notes and take over documents which refer to the given sales note / take over document.
+     *  Only the direct links are returned.
+     *  Referring means: have a referencedId which is the extId of the given report.
+     *
+     *  Example:
+     *  A refers to B
+     *  B refers to D
+     *  C refers to D
+     *  D refers to E
+     *
+     *  What is returned when you execute findReportsWhichReferTo(D)? B and C (not A, although it indirectly refers to D)
+     *
+     **/
+    List<Report> findReportsWhichReferTo(String extId);
+
 }
