@@ -23,6 +23,8 @@
         <joda.time.version>2.9.7</joda.time.version>
         <guava.version>20.0</guava.version>
         <rules.model.version>3.0.5-SNAPSHOT</rules.model.version>
+
+        <sonar.exclusions>eu/europa/fisheries/schema/sales/**/*</sonar.exclusions>
     </properties>
 	
 	<build>
