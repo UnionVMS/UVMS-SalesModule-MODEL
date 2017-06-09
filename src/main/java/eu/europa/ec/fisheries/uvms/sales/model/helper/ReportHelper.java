@@ -5,6 +5,7 @@ import eu.europa.ec.fisheries.uvms.sales.model.constant.Purpose;
 import org.joda.time.DateTime;
 
 import javax.ejb.Stateless;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -77,6 +78,14 @@ public class ReportHelper {
                 .getIncludedSalesDocuments().get(0);
     }
 
+    private SalesDocumentType getSalesDocumentOrNull(Report report) {
+        try {
+            return getSalesDocument(report);
+        } catch (NullPointerException | IndexOutOfBoundsException e) {
+            return null;
+        }
+    }
+
     private VesselTransportMeansType getVessel(Report report) {
         FishingActivityType fishingActivity = getFishingActivity(report);
         return fishingActivity.getRelatedVesselTransportMeans().get(0);
@@ -117,4 +126,28 @@ public class ReportHelper {
                     .getCreationDateTime()
                     .getDateTime();
     }
+
+    public boolean hasReferencesToTakeOverDocuments(Report report) {
+        SalesDocumentType salesDocument = getSalesDocumentOrNull(report);
+        if (salesDocument != null) {
+            return !salesDocument
+                    .getTakeoverDocumentIDs()
+                    .isEmpty();
+        } else {
+            return false;
+        }
+    }
+
+    public List<String> getReferenceIdsToTakeOverDocuments(Report report) {
+        List<String> ids = new ArrayList<>();
+        SalesDocumentType salesDocument = getSalesDocumentOrNull(report);
+        if (salesDocument != null) {
+            List<IDType> takeoverDocumentIDs = salesDocument.getTakeoverDocumentIDs();
+            for (IDType id : takeoverDocumentIDs) {
+                ids.add(id.getValue());
+            }
+        }
+        return ids;
+    }
 }
+

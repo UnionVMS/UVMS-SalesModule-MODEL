@@ -290,4 +290,66 @@ public class ReportHelperTest {
         Report report = ReportMother.withCreationDate(date);
         assertEquals(date, reportHelper.getCreationDate(report));
     }
+
+    @Test
+    public void testGetReferenceIdsToTakeOverDocumentsWhenSuccess() {
+        Report report = new Report()
+                .withFLUXSalesReportMessage(new FLUXSalesReportMessage()
+                    .withSalesReports(new SalesReportType()
+                        .withIncludedSalesDocuments(new SalesDocumentType()
+                            .withTakeoverDocumentIDs(new IDType().withValue("hello"),
+                                                     new IDType().withValue("hi")))));
+
+        List<String> referenceIdsToTakeOverDocuments = reportHelper.getReferenceIdsToTakeOverDocuments(report);
+        assertEquals(Lists.newArrayList("hello", "hi"), referenceIdsToTakeOverDocuments);
+    }
+
+    @Test
+    public void testGetReferenceIdsToTakeOverDocumentsWhenListOfTakeOverDocumentIdsIsEmpty() {
+        Report report = new Report()
+                .withFLUXSalesReportMessage(new FLUXSalesReportMessage()
+                        .withSalesReports(new SalesReportType()
+                                .withIncludedSalesDocuments(new SalesDocumentType())));
+
+        List<String> referenceIdsToTakeOverDocuments = reportHelper.getReferenceIdsToTakeOverDocuments(report);
+        assertTrue(referenceIdsToTakeOverDocuments.isEmpty());
+    }
+
+    @Test
+    public void testGetReferenceIdsToTakeOverDocumentsWhenThereAreNoSalesReports() {
+        Report report = new Report()
+                .withFLUXSalesReportMessage(new FLUXSalesReportMessage());
+
+        List<String> referenceIdsToTakeOverDocuments = reportHelper.getReferenceIdsToTakeOverDocuments(report);
+        assertTrue(referenceIdsToTakeOverDocuments.isEmpty());
+    }
+
+    @Test
+    public void testHasReferencesToTakeOverDocumentsWhenTrue() {
+        Report report = new Report()
+                .withFLUXSalesReportMessage(new FLUXSalesReportMessage()
+                        .withSalesReports(new SalesReportType()
+                                .withIncludedSalesDocuments(new SalesDocumentType()
+                                        .withTakeoverDocumentIDs(new IDType().withValue("hello world")))));
+
+        assertTrue(reportHelper.hasReferencesToTakeOverDocuments(report));
+    }
+
+    @Test
+    public void testHasReferencesToTakeOverDocumentsWhenFalseBecauseListOfTakeOverDocumentIdsIsEmpty() {
+        Report report = new Report()
+                .withFLUXSalesReportMessage(new FLUXSalesReportMessage()
+                        .withSalesReports(new SalesReportType()
+                                .withIncludedSalesDocuments(new SalesDocumentType())));
+
+        assertFalse(reportHelper.hasReferencesToTakeOverDocuments(report));
+    }
+
+    @Test
+    public void testHasReferencesToTakeOverDocumentsWhenFalseBecauseThereAreNoSalesReports() {
+        Report report = new Report()
+                .withFLUXSalesReportMessage(new FLUXSalesReportMessage());
+
+        assertFalse(reportHelper.hasReferencesToTakeOverDocuments(report));
+    }
 }
