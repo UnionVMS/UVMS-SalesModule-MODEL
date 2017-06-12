@@ -82,4 +82,11 @@ public interface ReportDomainModel {
      * corrects or deletes the given report.
      */
     Report findLatestVersion(Report report);
+
+    /**
+     * In case that the given report is a take over document: returns the related sales notes.
+     * In case that the given report is a sales note: returns the related take over documents.
+     * @param report
+     */
+    List<Report> findRelatedReportsOf(Report report);
 }
