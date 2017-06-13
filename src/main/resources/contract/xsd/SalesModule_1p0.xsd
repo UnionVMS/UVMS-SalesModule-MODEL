@@ -285,6 +285,9 @@ Schema date:    25July2016
             <xsd:enumeration value="SALES_LOCATION"/>
             <xsd:enumeration value="LANDING_DATE"/>
             <xsd:enumeration value="LANDING_PORT"/>
+            <xsd:enumeration value="CATEGORY"/>
+            <xsd:enumeration value="BUYER"/>
+            <xsd:enumeration value="SELLER"/>
         </xsd:restriction>
     </xsd:simpleType>
     <xsd:complexType name="SavedSearchGroup">

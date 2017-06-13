@@ -213,7 +213,7 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>lv</id>
+            <id>lv-snapshots</id>
             <url>https://apjenp01.dg3.be/nexus/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
