@@ -27,6 +27,8 @@
 
         <!-- excluding generated files from Sonar analysis -->
         <sonar.exclusions>src/main/java/eu/europa/ec/fisheries/schema/sales/**/*</sonar.exclusions>
+
+        <scm.connection>scm:git:https://github.com/UnionVMS/UVMS-SalesModule-MODEL.git</scm.connection>
     </properties>
 	
 	<build>
