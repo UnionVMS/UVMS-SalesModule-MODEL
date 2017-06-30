@@ -23,6 +23,7 @@
         <joda.time.version>2.9.7</joda.time.version>
         <guava.version>20.0</guava.version>
         <rules.model.version>3.0.5</rules.model.version>
+        <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
 
         <!-- excluding generated files from Sonar analysis -->
         <sonar.exclusions>src/main/java/eu/europa/ec/fisheries/schema/sales/**/*</sonar.exclusions>
@@ -56,7 +57,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>${maven-release-plugin}</version>
+                <version>${maven.release.plugin.version}</version>
                 <dependencies>
                     <dependency>
                         <groupId>org.apache.maven.scm</groupId>
