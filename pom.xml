@@ -24,7 +24,7 @@
         <guava.version>20.0</guava.version>
         <rules.model.version>3.0.5</rules.model.version>
 
-        <sonar.exclusions>eu/europa/fisheries/schema/sales/**/*</sonar.exclusions>
+        <sonar.exclusions>eu/europa/ec/fisheries/schema/sales/**/*</sonar.exclusions>
     </properties>
 	
 	<build>
