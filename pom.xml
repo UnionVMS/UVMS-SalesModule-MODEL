@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
+
     <groupId>eu.europa.ec.fisheries.uvms.sales</groupId>
     <artifactId>sales-model</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-	
+
     <name>${project.artifactId}</name>
-    
+
     <description>Maven project-archetype for UnionVMS Model</description>
-    
+
     <properties>
         <junit.version>4.10</junit.version>
         <mockito.version>1.9.5</mockito.version>
@@ -19,7 +20,7 @@
         <slf4j.version>1.7.12</slf4j.version>
         <logback.version>1.1.3</logback.version>
         <logback.core.version>1.1.3</logback.core.version>
-		<jaxb2.basics.version>0.9.5</jaxb2.basics.version>
+        <jaxb2.basics.version>0.9.5</jaxb2.basics.version>
         <joda.time.version>2.9.7</joda.time.version>
         <guava.version>20.0</guava.version>
         <rules.model.version>3.0.5</rules.model.version>
@@ -30,8 +31,8 @@
 
         <scm.connection>scm:git:https://github.com/UnionVMS/UVMS-SalesModule-MODEL.git</scm.connection>
     </properties>
-	
-	<build>
+
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -70,8 +71,8 @@
             </plugin>
         </plugins>
     </build>
-	
-	<profiles>
+
+    <profiles>
         <profile>
             <id>generate-from-wsdl</id>
             <build>
@@ -111,7 +112,9 @@
                                         <wsdlOption>
                                             <wsdl>${basedir}/src/main/resources/contract/sales-module.wsdl</wsdl>
                                             <bindingFiles>
-                                                <bindingFile>${basedir}/src/main/resources/bindings/sales-module-bindings.xml</bindingFile>
+                                                <bindingFile>
+                                                    ${basedir}/src/main/resources/bindings/sales-module-bindings.xml
+                                                </bindingFile>
                                             </bindingFiles>
                                             <extraargs>
                                                 <extraarg>-xjc-XhashCode</extraarg>
@@ -123,7 +126,9 @@
                                         <wsdlOption>
                                             <wsdl>${basedir}/src/main/resources/contract/ecb-proxy.wsdl</wsdl>
                                             <bindingFiles>
-                                                <bindingFile>${basedir}/src/main/resources/bindings/ecb-proxy-bindings.xml</bindingFile>
+                                                <bindingFile>
+                                                    ${basedir}/src/main/resources/bindings/ecb-proxy-bindings.xml
+                                                </bindingFile>
                                             </bindingFiles>
                                             <extraargs>
                                                 <extraarg>-xjc-XhashCode</extraarg>
@@ -158,21 +163,38 @@
         <profile>
             <id>focus</id>
             <distributionManagement>
+                <repository>
+                    <id>focus-releases</id>
+                    <name>UnionVms Repository</name>
+                    <url>http://nexus.focus.fish/nexus/content/repositories/releases/</url>
+                </repository>
                 <snapshotRepository>
                     <id>focus-snapshots</id>
-                    <url>http://nexus.focus.fish/nexus/content/repositories/snapshots</url>
+                    <name>UnionVms Snapshot Repository</name>
+                    <url>http://nexus.focus.fish/nexus/content/repositories/snapshots/</url>
                 </snapshotRepository>
             </distributionManagement>
         </profile>
-	</profiles>
-    
+
+        <profile>
+            <id>lv</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>lv-snapshots</id>
+                    <url>https://apjenp01.dg3.be/nexus/repository/maven-snapshots/</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+
+    </profiles>
+
     <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
-		<dependency>
+        <dependency>
             <groupId>org.jvnet.jaxb2_commons</groupId>
             <artifactId>jaxb2-basics</artifactId>
             <version>${jaxb2.basics.version}</version>
@@ -189,7 +211,7 @@
             <artifactId>joda-time</artifactId>
             <version>${joda.time.version}</version>
         </dependency>
-        
+
         <!-- LOGGING DEPENDENCIES -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -226,12 +248,9 @@
         </dependency>
     </dependencies>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>lv-snapshots</id>
-            <url>https://apjenp01.dg3.be/nexus/repository/maven-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
+    <scm>
+        <connection>${scm.connection}</connection>
+        <tag>HEAD</tag>
+    </scm>
 
 </project>
