@@ -160,21 +160,6 @@
                 </plugins>
             </build>
         </profile>
-        <profile>
-            <id>focus</id>
-            <distributionManagement>
-                <repository>
-                    <id>focus-releases</id>
-                    <name>UnionVms Repository</name>
-                    <url>http://nexus.focus.fish/nexus/content/repositories/releases/</url>
-                </repository>
-                <snapshotRepository>
-                    <id>focus-snapshots</id>
-                    <name>UnionVms Snapshot Repository</name>
-                    <url>http://nexus.focus.fish/nexus/content/repositories/snapshots/</url>
-                </snapshotRepository>
-            </distributionManagement>
-        </profile>
 
         <profile>
             <id>lv</id>
@@ -248,6 +233,18 @@
         </dependency>
     </dependencies>
 
+    <distributionManagement>
+        <repository>
+            <id>focus-releases</id>
+            <name>UnionVms Repository</name>
+            <url>http://nexus.focus.fish/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>focus-snapshots</id>
+            <name>UnionVms Snapshot Repository</name>
+            <url>http://nexus.focus.fish/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
     <scm>
         <connection>${scm.connection}</connection>
         <tag>HEAD</tag>
