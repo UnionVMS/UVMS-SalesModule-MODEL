@@ -161,7 +161,7 @@
         </profile>
 
         <profile>
-            <id>lv</id>
+            <id>belgium-local</id>
             <distributionManagement>
                 <snapshotRepository>
                     <id>lv-snapshots</id>
