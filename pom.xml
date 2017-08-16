@@ -24,9 +24,10 @@
         <guava.version>20.0</guava.version>
         <rules.model.version>3.0.5</rules.model.version>
         <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
+        <jacoco.version>0.7.9</jacoco.version>
 
         <!-- excluding generated files from Sonar analysis -->
-        <sonar.exclusions>src/main/java/eu/europa/ec/fisheries/schema/sales/**/*</sonar.exclusions>
+        <sonar.exclusions>**/*eu/europa/ec/fisheries/schema/sales/**/*, **/*org/w3/_2001/xmlschema/**/*</sonar.exclusions>
 
         <scm.connection>scm:git:https://github.com/UnionVMS/UVMS-SalesModule-MODEL.git</scm.connection>
     </properties>
@@ -161,13 +162,58 @@
         </profile>
 
         <profile>
-            <id>lv</id>
+            <id>belgium-local</id>
             <distributionManagement>
                 <snapshotRepository>
                     <id>lv-snapshots</id>
                     <url>https://apjenp01.dg3.be/nexus/repository/maven-snapshots/</url>
                 </snapshotRepository>
             </distributionManagement>
+        </profile>
+
+        <profile>
+            <id>jacoco</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>org.jacoco.core</artifactId>
+                    <version>${jacoco.version}</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>${jacoco.version}</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*eu/europa/ec/fisheries/schema/**/*</exclude>
+                                <exclude>**/*org/w3/_2001/xmlschema/**/*</exclude>
+                            </excludes>
+                            <systemPropertyVariables>
+                                <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
+                            </systemPropertyVariables>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>report</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
 
     </profiles>
