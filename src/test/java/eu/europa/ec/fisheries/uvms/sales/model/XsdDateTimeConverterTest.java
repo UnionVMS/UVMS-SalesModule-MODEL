@@ -11,31 +11,43 @@ copy of the GNU General Public License along with the IFDM Suite. If not, see <h
  */
 package eu.europa.ec.fisheries.uvms.sales.model;
 
-import eu.europa.ec.fisheries.uvms.sales.model.mapper.XsdDateTimeConverter;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
-import org.junit.*;
+import org.junit.Test;
 
+import static eu.europa.ec.fisheries.uvms.sales.model.mapper.XsdDateTimeConverter.*;
 import static org.junit.Assert.assertEquals;
 
 public class XsdDateTimeConverterTest {
 
+    private final String TIME =     "2017-05-11T12:10:38+02:00";
+    private final String DATE = "2017-05-11+02:00";
+
     @Test
-    public void testUnmarshal() {
-        DateTime expected = new DateTime(2001, 10, 26, 19, 32, 52, DateTimeZone.UTC);
-        assertEquals(expected, XsdDateTimeConverter.unmarshal("2001-10-26T21:32:52+02:00"));
+    public void testUnmarshal() throws Exception {
+        DateTime time = unmarshal(TIME);
+
+        assertEquals(2017, time.year().get());
+        assertEquals(5, time.monthOfYear().get());
+        assertEquals(11, time.dayOfMonth().get());
+        assertEquals(12, time.hourOfDay().get());
+        assertEquals(10, time.minuteOfHour().get());
+        assertEquals(38, time.secondOfMinute().get());
+        assertEquals(DateTimeZone.forOffsetHours(2), time.getZone());
     }
 
     @Test
-    public void testMarshalDate() {
-        DateTime dateTime = new DateTime(2017,1,1,12,13, DateTimeZone.UTC);
-        assertEquals("2017-01-01Z", XsdDateTimeConverter.marshalDate(dateTime));
+    public void testMarshalDate() throws Exception {
+        String marshalledDate = marshalDate(DateTime.parse(TIME));
+
+        assertEquals(DATE, marshalledDate);
     }
 
     @Test
-    public void testMarshalDateTime() {
-        DateTime dateTime = new DateTime(2017,1,1,12,13, DateTimeZone.UTC);
-        assertEquals("2017-01-01T12:13:00Z", XsdDateTimeConverter.marshalDateTime(dateTime));
+    public void testMarshalDateTime() throws Exception {
+        String marshalledDate = marshalDateTime(DateTime.parse(TIME));
+
+        assertEquals(TIME, marshalledDate);
     }
 
 }
