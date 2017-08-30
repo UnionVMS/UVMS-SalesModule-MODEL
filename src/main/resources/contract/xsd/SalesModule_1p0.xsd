@@ -342,6 +342,7 @@ Schema date:    25July2016
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="QUERY"/>
             <xsd:enumeration value="REPORT"/>
+            <xsd:enumeration value="FIND_REPORT"/>
             <xsd:enumeration value="INVALID_MESSAGE"/>
         </xsd:restriction>
     </xsd:simpleType>
@@ -393,6 +394,51 @@ Schema date:    25July2016
                     </xsd:sequence>
                 </xsd:extension>
             </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="FindReportByIdRequest">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="bat:SalesBaseRequest">
+                    <xsd:sequence>
+                        <xsd:element name="id" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="FindReportByIdResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="report" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:simpleType name="UniqueIDType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="TRANSPORT_DOCUMENT"/>
+            <xsd:enumeration value="SALES_DOCUMENT"/>
+            <xsd:enumeration value="TAKEOVER_DOCUMENT"/>
+            <xsd:enumeration value="SALES_QUERY"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:element name="CheckForUniqueIdRequest">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="bat:SalesBaseRequest">
+                    <xsd:sequence>
+                        <xsd:element name="type" type="bat:UniqueIDType" />
+                        <xsd:element name="id" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="CheckForUniqueIdResponse">
+        <xsd:complexType>
+            <xsd:attribute name="unique" type="xsd:boolean"/>
         </xsd:complexType>
     </xsd:element>
 </xsd:schema>

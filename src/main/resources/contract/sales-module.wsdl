@@ -3,6 +3,7 @@
                   targetNamespace="urn:module.sales.schema.fisheries.ec.europa.eu:v1"
                   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:sal="eu.europa.ec.fisheries.schema.sales"
 >
     <wsdl:documentation>Version: 1.0</wsdl:documentation>
     <wsdl:types>
@@ -12,4 +13,18 @@
         </xsd:schema>
     </wsdl:types>
 
+    <wsdl:message name="FindReportByIdRequest">
+        <wsdl:part name="body" element="sal:FindReportByIdRequest" />
+    </wsdl:message>
+
+    <wsdl:message name="FindReportByIdResponse">
+        <wsdl:part name="body" element="sal:FindReportByIdResponse" />
+    </wsdl:message>
+
+    <wsdl:portType name="SalesModulePortType">
+        <wsdl:operation name="FindReportById">
+            <wsdl:input message="FindReportByIdRequest"/>
+            <wsdl:output message="FindReportByIdResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
 </wsdl:definitions>

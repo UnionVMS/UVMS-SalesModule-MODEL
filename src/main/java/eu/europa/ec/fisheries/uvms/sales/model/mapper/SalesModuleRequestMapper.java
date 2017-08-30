@@ -50,5 +50,37 @@ public class SalesModuleRequestMapper {
         return JAXBMarshaller.marshallJaxBObjectToString(respondToInvalidMessageRequest);
     }
 
+    public static String createFindReportByIdRequest(String id) throws SalesMarshallException {
+        checkNotNull(id, "Cannot find reports with id null");
 
+        FindReportByIdRequest findReportByIdRequest = new FindReportByIdRequest()
+                .withMethod(SalesModuleMethod.FIND_REPORT)
+                .withId(id)
+                .withPluginToSendResponseThrough("RULES")
+                .withMessageValidationStatus(FLUXGPResponse.OK);
+
+        return JAXBMarshaller.marshallJaxBObjectToString(findReportByIdRequest);
+    }
+
+    public static String createFindReportByIdResponse(String report) throws SalesMarshallException {
+        // Report can be null
+        FindReportByIdResponse findReportByIdResponse = new FindReportByIdResponse()
+                .withReport(report);
+
+        return JAXBMarshaller.marshallJaxBObjectToString(findReportByIdResponse);
+    }
+
+    public static String createCheckForUniqueIdRequest(String id) throws SalesMarshallException {
+        CheckForUniqueIdRequest checkForUniqueIdRequest = new CheckForUniqueIdRequest()
+                .withId(id);
+
+        return JAXBMarshaller.marshallJaxBObjectToString(checkForUniqueIdRequest);
+    }
+
+    public static String createCheckForUniqueIdResponse(boolean isUnique) throws SalesMarshallException {
+        CheckForUniqueIdResponse checkForUniqueIdResponse = new CheckForUniqueIdResponse()
+                .withUnique(isUnique);
+
+        return JAXBMarshaller.marshallJaxBObjectToString(checkForUniqueIdResponse);
+    }
 }
