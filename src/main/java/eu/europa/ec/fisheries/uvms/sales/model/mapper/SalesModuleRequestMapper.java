@@ -55,9 +55,7 @@ public class SalesModuleRequestMapper {
 
         FindReportByIdRequest findReportByIdRequest = new FindReportByIdRequest()
                 .withMethod(SalesModuleMethod.FIND_REPORT)
-                .withId(id)
-                .withPluginToSendResponseThrough("RULES")
-                .withMessageValidationStatus(FLUXGPResponse.OK);
+                .withId(id);
 
         return JAXBMarshaller.marshallJaxBObjectToString(findReportByIdRequest);
     }
@@ -70,9 +68,11 @@ public class SalesModuleRequestMapper {
         return JAXBMarshaller.marshallJaxBObjectToString(findReportByIdResponse);
     }
 
-    public static String createCheckForUniqueIdRequest(String id) throws SalesMarshallException {
+    public static String createCheckForUniqueIdRequest(List<String> ids, UniqueIDType type) throws SalesMarshallException {
         CheckForUniqueIdRequest checkForUniqueIdRequest = new CheckForUniqueIdRequest()
-                .withId(id);
+                .withMethod(SalesModuleMethod.UNIQUE_ID)
+                .withType(type)
+                .withIds(ids);
 
         return JAXBMarshaller.marshallJaxBObjectToString(checkForUniqueIdRequest);
     }

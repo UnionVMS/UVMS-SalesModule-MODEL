@@ -334,8 +334,8 @@ Schema date:    25July2016
         <xsd:sequence>
             <xsd:element name="method" type="bat:SalesModuleMethod"/>
             <xsd:element name="validationResult" type="ram:ValidationQualityAnalysisType" minOccurs="0" maxOccurs="unbounded" />
-            <xsd:element name="messageValidationStatus" type="bat:FLUXGPResponse" />
-            <xsd:element name="pluginToSendResponseThrough" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="messageValidationStatus" type="bat:FLUXGPResponse" minOccurs="0"/>
+            <xsd:element name="pluginToSendResponseThrough" type="xsd:string" minOccurs="0" maxOccurs="1" />
         </xsd:sequence>
     </xsd:complexType>
     <xsd:simpleType name="SalesModuleMethod">
@@ -343,6 +343,7 @@ Schema date:    25July2016
             <xsd:enumeration value="QUERY"/>
             <xsd:enumeration value="REPORT"/>
             <xsd:enumeration value="FIND_REPORT"/>
+            <xsd:enumeration value="UNIQUE_ID"/>
             <xsd:enumeration value="INVALID_MESSAGE"/>
         </xsd:restriction>
     </xsd:simpleType>
@@ -430,7 +431,7 @@ Schema date:    25July2016
                 <xsd:extension base="bat:SalesBaseRequest">
                     <xsd:sequence>
                         <xsd:element name="type" type="bat:UniqueIDType" />
-                        <xsd:element name="id" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                        <xsd:element name="id" type="xsd:string" minOccurs="1" maxOccurs="unbounded" />
                     </xsd:sequence>
                 </xsd:extension>
             </xsd:complexContent>
