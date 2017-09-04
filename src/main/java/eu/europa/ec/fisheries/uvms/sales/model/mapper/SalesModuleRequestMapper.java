@@ -15,7 +15,7 @@ public class SalesModuleRequestMapper {
 
         SalesReportRequest salesReportRequest = new SalesReportRequest();
         salesReportRequest.setReport(checkNotNull(request));
-        salesReportRequest.setMethod(SalesModuleMethod.REPORT);
+        salesReportRequest.setMethod(SalesModuleMethod.SAVE_REPORT);
         salesReportRequest.getValidationResults().addAll(validationQualityAnalysis);
         salesReportRequest.setMessageValidationStatus(FLUXGPResponseMapper.map(validationResultDto));
         salesReportRequest.setPluginToSendResponseThrough(pluginToSendResponseThrough);
@@ -40,7 +40,7 @@ public class SalesModuleRequestMapper {
         List<ValidationQualityAnalysisType> validationQualityAnalysis = ValidationQualityAnalysisMapper.map(validationResultDto);
 
         RespondToInvalidMessageRequest respondToInvalidMessageRequest = new RespondToInvalidMessageRequest();
-        respondToInvalidMessageRequest.setMethod(SalesModuleMethod.INVALID_MESSAGE);
+        respondToInvalidMessageRequest.setMethod(SalesModuleMethod.CREATE_INVALID_MESSAGE);
         respondToInvalidMessageRequest.getValidationResults().addAll(validationQualityAnalysis);
         respondToInvalidMessageRequest.setMessageValidationStatus(FLUXGPResponseMapper.map(validationResultDto));
         respondToInvalidMessageRequest.setPluginToSendResponseThrough(pluginToSendResponseThrough);
@@ -54,7 +54,7 @@ public class SalesModuleRequestMapper {
         checkNotNull(id, "Cannot find reports with id null");
 
         FindReportByIdRequest findReportByIdRequest = new FindReportByIdRequest()
-                .withMethod(SalesModuleMethod.FIND_REPORT)
+                .withMethod(SalesModuleMethod.FIND_REPORT_BY_ID)
                 .withId(id);
 
         return JAXBMarshaller.marshallJaxBObjectToString(findReportByIdRequest);
@@ -70,7 +70,7 @@ public class SalesModuleRequestMapper {
 
     public static String createCheckForUniqueIdRequest(List<String> ids, UniqueIDType type) throws SalesMarshallException {
         CheckForUniqueIdRequest checkForUniqueIdRequest = new CheckForUniqueIdRequest()
-                .withMethod(SalesModuleMethod.UNIQUE_ID)
+                .withMethod(SalesModuleMethod.CHECK_UNIQUE_ID)
                 .withType(type)
                 .withIds(ids);
 

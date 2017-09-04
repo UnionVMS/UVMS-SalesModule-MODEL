@@ -341,10 +341,10 @@ Schema date:    25July2016
     <xsd:simpleType name="SalesModuleMethod">
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="QUERY"/>
-            <xsd:enumeration value="REPORT"/>
-            <xsd:enumeration value="FIND_REPORT"/>
-            <xsd:enumeration value="UNIQUE_ID"/>
-            <xsd:enumeration value="INVALID_MESSAGE"/>
+            <xsd:enumeration value="SAVE_REPORT"/>
+            <xsd:enumeration value="FIND_REPORT_BY_ID"/>
+            <xsd:enumeration value="CHECK_UNIQUE_ID"/>
+            <xsd:enumeration value="CREATE_INVALID_MESSAGE"/>
         </xsd:restriction>
     </xsd:simpleType>
     <xsd:simpleType name="FLUXGPValidationType">
