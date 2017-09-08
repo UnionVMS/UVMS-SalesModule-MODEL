@@ -422,6 +422,8 @@ Schema date:    25July2016
             <xsd:enumeration value="SALES_DOCUMENT"/>
             <xsd:enumeration value="TAKEOVER_DOCUMENT"/>
             <xsd:enumeration value="SALES_QUERY"/>
+            <xsd:enumeration value="SALES_RESPONSE"/>
+            <xsd:enumeration value="SALES_RESPONSE_REFERENCED_ID"/>
         </xsd:restriction>
     </xsd:simpleType>
 
