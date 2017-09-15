@@ -5,6 +5,9 @@ import org.joda.time.DateTime;
 import javax.xml.bind.DatatypeConverter;
 
 public class XsdDateTimeConverter {
+
+    private XsdDateTimeConverter() {}
+
     public static DateTime unmarshal(String dateTime) {
         return new DateTime(DatatypeConverter.parseDate(dateTime));
     }

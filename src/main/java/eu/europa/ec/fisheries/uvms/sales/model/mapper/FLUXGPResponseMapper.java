@@ -8,6 +8,8 @@ import eu.europa.ec.fisheries.uvms.rules.model.dto.ValidationResultDto;
  */
 public class FLUXGPResponseMapper {
 
+    private FLUXGPResponseMapper() {}
+
     public static FLUXGPResponse map(ValidationResultDto validationResultDto) {
         if (validationResultDto.isError()) {
             return FLUXGPResponse.NOK;

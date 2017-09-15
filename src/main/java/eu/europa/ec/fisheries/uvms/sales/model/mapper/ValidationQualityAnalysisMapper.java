@@ -12,6 +12,8 @@ import java.util.List;
 
 public class ValidationQualityAnalysisMapper {
 
+    private ValidationQualityAnalysisMapper() {}
+
     public static List<ValidationQualityAnalysisType> map(ValidationResultDto validationResultDto) {
         List<ValidationQualityAnalysisType> validationQualityAnalysis = new ArrayList<>();
         for (ValidationMessageType validationMessage: validationResultDto.getValidationMessages()) {

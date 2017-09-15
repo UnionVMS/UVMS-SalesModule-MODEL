@@ -29,6 +29,8 @@ import java.util.Map;
 
 public class JAXBMarshaller {
 
+    private JAXBMarshaller() {}
+
     final static Logger LOG = LoggerFactory.getLogger(JAXBMarshaller.class);
 
     private static Map<String, JAXBContext> contexts = new HashMap<>();
