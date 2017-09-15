@@ -29,11 +29,11 @@ import java.util.Map;
 
 public class JAXBMarshaller {
 
-    private JAXBMarshaller() {}
-
     final static Logger LOG = LoggerFactory.getLogger(JAXBMarshaller.class);
 
     private static Map<String, JAXBContext> contexts = new HashMap<>();
+
+    private JAXBMarshaller() {}
 
     /**
      * Marshalls a JAXB Object to a XML String representation
@@ -58,8 +58,7 @@ public class JAXBMarshaller {
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             StringWriter sw = new StringWriter();
             marshaller.marshal(data, sw);
-            String marshalled = sw.toString();
-            return marshalled;
+            return sw.toString();
         } catch (JAXBException ex) {
             throw new SalesMarshallException("Error when marshalling Object to String", ex);
         }
