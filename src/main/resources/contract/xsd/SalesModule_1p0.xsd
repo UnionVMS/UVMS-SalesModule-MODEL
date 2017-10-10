@@ -24,7 +24,6 @@ Schema date:    25July2016
     <!-- ======================================================================= -->
     <xsd:import namespace="eu.europa.ec.fisheries.schema.sales.flux"
                 schemaLocation="FLUXSalesMessage_3p1.xsd"/>
-
     <!-- ======================================================================= -->
     <!-- ===== Import of Unqualified Data Type Schema Module               ===== -->
     <!-- ======================================================================= -->
@@ -35,6 +34,13 @@ Schema date:    25July2016
     <!-- ======================================================================= -->
     <xsd:import namespace="urn:un:unece:uncefact:data:Standard:QualifiedDataType:20"
                 schemaLocation="QualifiedDataType_20p0.xsd"/>
+
+    <!-- ======================================================================= -->
+    <!-- ===== Import of Reusable Aggregate Business                       ===== -->
+    <!-- ===== Information Type Schema Module                              ===== -->
+    <!-- ======================================================================= -->
+    <xsd:import namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:20"
+                schemaLocation="ReusableAggregateBusinessInformationEntity_20p0.xsd"/>
     <!-- ======================================================================= -->
     <!-- ===== Element Declarations                                        ===== -->
     <!-- ======================================================================= -->
