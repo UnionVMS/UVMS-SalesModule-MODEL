@@ -70,7 +70,7 @@ public class SalesModuleRequestMapper {
         return JAXBMarshaller.marshallJaxBObjectToString(findReportByIdResponse);
     }
 
-    public static String createCheckForUniqueIdRequest(List<String> ids, UniqueIDType type) throws SalesMarshallException {
+    public static String createCheckForUniqueIdRequest(List<String> ids, SalesMessageIdType type) throws SalesMarshallException {
         CheckForUniqueIdRequest checkForUniqueIdRequest = new CheckForUniqueIdRequest()
                 .withMethod(SalesModuleMethod.CHECK_UNIQUE_ID)
                 .withType(type)

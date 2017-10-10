@@ -416,7 +416,7 @@ Schema date:    25July2016
         </xsd:complexType>
     </xsd:element>
 
-    <xsd:simpleType name="UniqueIDType">
+    <xsd:simpleType name="SalesMessageIdType">
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="TRANSPORT_DOCUMENT"/>
             <xsd:enumeration value="SALES_DOCUMENT"/>
@@ -432,7 +432,7 @@ Schema date:    25July2016
             <xsd:complexContent>
                 <xsd:extension base="bat:SalesBaseRequest">
                     <xsd:sequence>
-                        <xsd:element name="type" type="bat:UniqueIDType" />
+                        <xsd:element name="type" type="bat:SalesMessageIdType" />
                         <xsd:element name="id" type="xsd:string" minOccurs="1" maxOccurs="unbounded" />
                     </xsd:sequence>
                 </xsd:extension>
