@@ -18,9 +18,12 @@ public class ValidationQualityAnalysisMapper {
         List<ValidationQualityAnalysisType> validationQualityAnalysis = new ArrayList<>();
         for (ValidationMessageType validationMessage: validationResultDto.getValidationMessages()) {
             validationQualityAnalysis.add(new ValidationQualityAnalysisType()
-                    .withID(new IDType().withValue(validationMessage.getBrId()))
-                    .withLevelCode(new CodeType().withValue(validationMessage.getLevel()))
-                    .withTypeCode(new CodeType().withValue(FLUXGPValidationTypeMapper.map(validationMessage.getErrorType())))
+                    .withID(new IDType().withValue(validationMessage.getBrId())
+                                        .withSchemeID("SALE_BR"))
+                    .withLevelCode(new CodeType()   .withValue(validationMessage.getLevel())
+                                                    .withListID("FLUX_GP_VALIDATION_LEVEL"))
+                    .withTypeCode(new CodeType()    .withValue(FLUXGPValidationTypeMapper.map(validationMessage.getErrorType()))
+                                                    .withListID("FLUX_GP_VALIDATION_TYPE"))
                     .withResults(new TextType().withValue(validationMessage.getMessage())));
         }
         return validationQualityAnalysis;
