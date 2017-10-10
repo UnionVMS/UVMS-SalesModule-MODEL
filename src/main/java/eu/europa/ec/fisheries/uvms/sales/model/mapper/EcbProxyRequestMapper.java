@@ -7,6 +7,8 @@ import org.joda.time.DateTime;
 
 public class EcbProxyRequestMapper {
 
+    private EcbProxyRequestMapper() {}
+
     public static String createGetExchangeRateRequest(String sourceCurrency, String targetCurrency, DateTime date) throws SalesMarshallException {
         GetExchangeRateRequest convertCurrencyRequest = new GetExchangeRateRequest()
                 .withSourceCurrency(sourceCurrency)

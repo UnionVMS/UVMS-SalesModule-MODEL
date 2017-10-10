@@ -10,6 +10,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class SalesModuleRequestMapper {
 
+    private SalesModuleRequestMapper() {}
+
     public static String createSalesReportRequest(String request, ValidationResultDto validationResultDto, String pluginToSendResponseThrough) throws SalesMarshallException {
         List<ValidationQualityAnalysisType> validationQualityAnalysis = ValidationQualityAnalysisMapper.map(validationResultDto);
 

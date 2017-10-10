@@ -4,7 +4,7 @@
 
     <groupId>eu.europa.ec.fisheries.uvms.sales</groupId>
     <artifactId>sales-model</artifactId>
-    <version>1.0.5-SNAPSHOT</version>
+    <version>1.0.6-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -121,6 +121,8 @@
                                                 <extraarg>-xjc-Xequals</extraarg>
                                                 <extraarg>-xjc-XtoString</extraarg>
                                                 <extraarg>-xjc-Xfluent-api</extraarg>
+                                                <extraarg>-p</extraarg>
+                                                <extraarg>http://www.w3.org/2001/XMLSchema=eu.europa.ec.fisheries.schema.sales</extraarg>
                                             </extraargs>
                                         </wsdlOption>
                                         <wsdlOption>
@@ -135,6 +137,8 @@
                                                 <extraarg>-xjc-Xequals</extraarg>
                                                 <extraarg>-xjc-XtoString</extraarg>
                                                 <extraarg>-xjc-Xfluent-api</extraarg>
+                                                <extraarg>-p</extraarg>
+                                                <extraarg>http://www.w3.org/2001/XMLSchema=eu.europa.ec.fisheries.schema.sales</extraarg>
                                             </extraargs>
                                         </wsdlOption>
                                     </wsdlOptions>

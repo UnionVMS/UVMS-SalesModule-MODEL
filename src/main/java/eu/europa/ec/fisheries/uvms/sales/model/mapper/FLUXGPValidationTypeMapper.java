@@ -5,6 +5,8 @@ import eu.europa.ec.fisheries.schema.sales.FLUXGPValidationType;
 
 public class FLUXGPValidationTypeMapper {
 
+    private FLUXGPValidationTypeMapper() {}
+
     public static String map(ErrorType errorType) {
 
         switch (errorType) {

@@ -29,9 +29,11 @@ import java.util.Map;
 
 public class JAXBMarshaller {
 
-    final static Logger LOG = LoggerFactory.getLogger(JAXBMarshaller.class);
+    static final Logger LOG = LoggerFactory.getLogger(JAXBMarshaller.class);
 
     private static Map<String, JAXBContext> contexts = new HashMap<>();
+
+    private JAXBMarshaller() {}
 
     /**
      * Marshalls a JAXB Object to a XML String representation
@@ -46,18 +48,14 @@ public class JAXBMarshaller {
         try {
             JAXBContext jaxbContext = contexts.get(data.getClass().getName());
             if (jaxbContext == null) {
-                long before = System.currentTimeMillis();
                 jaxbContext = JAXBContext.newInstance(data.getClass());
                 contexts.put(data.getClass().getName(), jaxbContext);
-                LOG.debug("Stored contexts: {}", contexts.size());
-                LOG.debug("JAXBContext creation time: {}", (System.currentTimeMillis() - before));
             }
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             StringWriter sw = new StringWriter();
             marshaller.marshal(data, sw);
-            String marshalled = sw.toString();
-            return marshalled;
+            return sw.toString();
         } catch (JAXBException ex) {
             throw new SalesMarshallException("Error when marshalling Object to String", ex);
         }
@@ -77,7 +75,7 @@ public class JAXBMarshaller {
         try {
             return unmarshallString(textMessage.getText(), clazz);
         } catch (JMSException | SalesMarshallException ex) {
-            throw new SalesMarshallException("Error when text message", ex);
+            throw new SalesMarshallException("Error when unmarshalling text message", ex);
         }
     }
 
@@ -95,11 +93,8 @@ public class JAXBMarshaller {
         try {
             JAXBContext jc = contexts.get(clazz.getName());
             if (jc == null) {
-                long before = System.currentTimeMillis();
                 jc = JAXBContext.newInstance(clazz);
                 contexts.put(clazz.getName(), jc);
-                LOG.debug("Stored contexts: {}", contexts.size());
-                LOG.debug("JAXBContext creation time: {}", (System.currentTimeMillis() - before));
             }
             Unmarshaller unmarshaller = jc.createUnmarshaller();
             StringReader sr = new StringReader(text);

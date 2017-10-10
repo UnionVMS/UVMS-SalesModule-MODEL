@@ -35,13 +35,19 @@ public class ValidationQualityAnalysisMapperTest {
         assertEquals(2, validationQualityAnalysis.size());
 
         assertEquals("brId1", validationQualityAnalysis.get(0).getID().getValue());
+        assertEquals("SALE_BR", validationQualityAnalysis.get(0).getID().getSchemeID());
         assertEquals("ERR", validationQualityAnalysis.get(0).getTypeCode().getValue());
+        assertEquals("FLUX_GP_VALIDATION_TYPE", validationQualityAnalysis.get(0).getTypeCode().getListID());
         assertEquals("L01", validationQualityAnalysis.get(0).getLevelCode().getValue());
+        assertEquals("FLUX_GP_VALIDATION_LEVEL", validationQualityAnalysis.get(0).getLevelCode().getListID());
         assertEquals("message 1", validationQualityAnalysis.get(0).getResults().get(0).getValue());
 
         assertEquals("brId2", validationQualityAnalysis.get(1).getID().getValue());
+        assertEquals("SALE_BR", validationQualityAnalysis.get(1).getID().getSchemeID());
         assertEquals("WAR", validationQualityAnalysis.get(1).getTypeCode().getValue());
+        assertEquals("FLUX_GP_VALIDATION_TYPE", validationQualityAnalysis.get(1).getTypeCode().getListID());
         assertEquals("L02", validationQualityAnalysis.get(1).getLevelCode().getValue());
+        assertEquals("FLUX_GP_VALIDATION_LEVEL", validationQualityAnalysis.get(1).getLevelCode().getListID());
         assertEquals("message 2", validationQualityAnalysis.get(1).getResults().get(0).getValue());
     }
 
