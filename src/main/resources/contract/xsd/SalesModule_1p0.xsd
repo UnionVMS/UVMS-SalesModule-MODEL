@@ -420,7 +420,7 @@ Schema date:    25July2016
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="TRANSPORT_DOCUMENT"/>
             <xsd:enumeration value="SALES_DOCUMENT"/>
-            <xsd:enumeration value="TAKEOVER_DOCUMENT"/>
+            <xsd:enumeration value="SALES_REPORT"/>
             <xsd:enumeration value="SALES_QUERY"/>
             <xsd:enumeration value="SALES_RESPONSE"/>
             <xsd:enumeration value="SALES_RESPONSE_REFERENCED_ID"/>
