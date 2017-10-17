@@ -398,6 +398,7 @@ Schema date:    25July2016
                     <xsd:sequence>
                         <xsd:element name="sender" type="xsd:string" minOccurs="1" maxOccurs="1" />
                         <xsd:element name="messageGuid" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                        <xsd:element name="schemeId" type="xsd:string" minOccurs="0" maxOccurs="1" />
                     </xsd:sequence>
                 </xsd:extension>
             </xsd:complexContent>
