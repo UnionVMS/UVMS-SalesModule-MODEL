@@ -10,6 +10,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ValidationQualityAnalysisMapperTest {
 
@@ -20,6 +21,8 @@ public class ValidationQualityAnalysisMapperTest {
         validationMessage1.setErrorType(ErrorType.ERROR);
         validationMessage1.setLevel("L01");
         validationMessage1.setMessage("message 1");
+        validationMessage1.getXpaths().add("xpath1");
+        validationMessage1.getXpaths().add("xpath2");
 
         ValidationMessageType validationMessage2 = new ValidationMessageType();
         validationMessage2.setBrId("brId2");
@@ -41,6 +44,8 @@ public class ValidationQualityAnalysisMapperTest {
         assertEquals("L01", validationQualityAnalysis.get(0).getLevelCode().getValue());
         assertEquals("FLUX_GP_VALIDATION_LEVEL", validationQualityAnalysis.get(0).getLevelCode().getListID());
         assertEquals("message 1", validationQualityAnalysis.get(0).getResults().get(0).getValue());
+        assertEquals("xpath1", validationQualityAnalysis.get(0).getReferencedItems().get(0).getValue());
+        assertEquals("xpath2", validationQualityAnalysis.get(0).getReferencedItems().get(1).getValue());
 
         assertEquals("brId2", validationQualityAnalysis.get(1).getID().getValue());
         assertEquals("SALE_BR", validationQualityAnalysis.get(1).getID().getSchemeID());
@@ -49,6 +54,7 @@ public class ValidationQualityAnalysisMapperTest {
         assertEquals("L02", validationQualityAnalysis.get(1).getLevelCode().getValue());
         assertEquals("FLUX_GP_VALIDATION_LEVEL", validationQualityAnalysis.get(1).getLevelCode().getListID());
         assertEquals("message 2", validationQualityAnalysis.get(1).getResults().get(0).getValue());
+        assertTrue(validationQualityAnalysis.get(1).getReferencedItems().isEmpty());
     }
 
 }
