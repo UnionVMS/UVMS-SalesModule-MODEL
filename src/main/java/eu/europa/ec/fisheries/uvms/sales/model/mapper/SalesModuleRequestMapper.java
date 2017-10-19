@@ -1,7 +1,6 @@
 package eu.europa.ec.fisheries.uvms.sales.model.mapper;
 
 import eu.europa.ec.fisheries.schema.sales.*;
-import eu.europa.ec.fisheries.uvms.rules.model.dto.ValidationResultDto;
 import eu.europa.ec.fisheries.uvms.sales.model.exception.SalesMarshallException;
 
 import java.util.List;
@@ -12,57 +11,49 @@ public class SalesModuleRequestMapper {
 
     private SalesModuleRequestMapper() {}
 
-    public static String createSalesReportRequest(String request, ValidationResultDto validationResultDto, String pluginToSendResponseThrough) throws SalesMarshallException {
-        List<ValidationQualityAnalysisType> validationQualityAnalysis = ValidationQualityAnalysisMapper.map(validationResultDto);
-
+    public static String createSalesReportRequest(String request, String status, List<ValidationQualityAnalysisType> validationQualityAnalysis, String pluginToSendResponseThrough) throws SalesMarshallException {
         SalesReportRequest salesReportRequest = new SalesReportRequest();
         salesReportRequest.setReport(checkNotNull(request));
         salesReportRequest.setMethod(SalesModuleMethod.SAVE_REPORT);
-        salesReportRequest.getValidationResults().addAll(validationQualityAnalysis);
-        salesReportRequest.setMessageValidationStatus(FLUXGPResponseMapper.map(validationResultDto));
+        salesReportRequest.getValidationQualityAnalysises().addAll(validationQualityAnalysis);
+        salesReportRequest.setMessageValidationStatus(status);
         salesReportRequest.setPluginToSendResponseThrough(pluginToSendResponseThrough);
 
         return JAXBMarshaller.marshallJaxBObjectToString(salesReportRequest);
     }
 
-    public static String createSalesQueryRequest(String query, ValidationResultDto validationResultDto, String pluginToSendResponseThrough) throws SalesMarshallException {
-        List<ValidationQualityAnalysisType> validationQualityAnalysis = ValidationQualityAnalysisMapper.map(validationResultDto);
-
+    public static String createSalesQueryRequest(String query, String status, List<ValidationQualityAnalysisType> validationQualityAnalysis, String pluginToSendResponseThrough) throws SalesMarshallException {
         SalesQueryRequest salesQueryRequest = new SalesQueryRequest();
         salesQueryRequest.setQuery(checkNotNull(query));
         salesQueryRequest.setMethod(SalesModuleMethod.QUERY);
-        salesQueryRequest.getValidationResults().addAll(validationQualityAnalysis);
-        salesQueryRequest.setMessageValidationStatus(FLUXGPResponseMapper.map(validationResultDto));
+        salesQueryRequest.getValidationQualityAnalysises().addAll(validationQualityAnalysis);
+        salesQueryRequest.setMessageValidationStatus(status);
         salesQueryRequest.setPluginToSendResponseThrough(pluginToSendResponseThrough);
 
         return JAXBMarshaller.marshallJaxBObjectToString(salesQueryRequest);
     }
 
-    public static String createRespondToInvalidMessageRequest(String messageGuid, ValidationResultDto validationResultDto, String pluginToSendResponseThrough, String sender) throws SalesMarshallException {
-        List<ValidationQualityAnalysisType> validationQualityAnalysis = ValidationQualityAnalysisMapper.map(validationResultDto);
-
+    public static String createRespondToInvalidMessageRequest(String messageGuid, List<ValidationQualityAnalysisType> validationQualityAnalysis, String pluginToSendResponseThrough, String sender) throws SalesMarshallException {
         RespondToInvalidMessageRequest respondToInvalidMessageRequest =
-                fillRespondToInvalidMessageRequest(messageGuid, validationResultDto, pluginToSendResponseThrough, sender, validationQualityAnalysis);
+                fillRespondToInvalidMessageRequest(messageGuid, validationQualityAnalysis, pluginToSendResponseThrough, sender);
 
         return JAXBMarshaller.marshallJaxBObjectToString(respondToInvalidMessageRequest);
     }
 
-    public static String createRespondToInvalidMessageRequest(String messageGuid, ValidationResultDto validationResultDto, String pluginToSendResponseThrough, String sender, String schemeId) throws SalesMarshallException {
-        createRespondToInvalidMessageRequest(messageGuid, validationResultDto, pluginToSendResponseThrough, sender);
-        List<ValidationQualityAnalysisType> validationQualityAnalysis = ValidationQualityAnalysisMapper.map(validationResultDto);
+    public static String createRespondToInvalidMessageRequest(String messageGuid, List<ValidationQualityAnalysisType> validationQualityAnalysis, String pluginToSendResponseThrough, String sender, String messageGuidSchemeId) throws SalesMarshallException {
+        createRespondToInvalidMessageRequest(messageGuid, validationQualityAnalysis, pluginToSendResponseThrough, sender);
 
         RespondToInvalidMessageRequest respondToInvalidMessageRequest =
-                fillRespondToInvalidMessageRequest(messageGuid, validationResultDto, pluginToSendResponseThrough, sender, validationQualityAnalysis);
-        respondToInvalidMessageRequest.setSchemeId(schemeId);
+                fillRespondToInvalidMessageRequest(messageGuid, validationQualityAnalysis, pluginToSendResponseThrough, sender);
+        respondToInvalidMessageRequest.setSchemeId(messageGuidSchemeId);
 
         return JAXBMarshaller.marshallJaxBObjectToString(respondToInvalidMessageRequest);
     }
 
-    private static RespondToInvalidMessageRequest fillRespondToInvalidMessageRequest(String messageGuid, ValidationResultDto validationResultDto, String pluginToSendResponseThrough, String sender, List<ValidationQualityAnalysisType> validationQualityAnalysis) {
+    private static RespondToInvalidMessageRequest fillRespondToInvalidMessageRequest(String messageGuid, List<ValidationQualityAnalysisType> validationQualityAnalysis, String pluginToSendResponseThrough, String sender) {
         RespondToInvalidMessageRequest respondToInvalidMessageRequest = new RespondToInvalidMessageRequest();
         respondToInvalidMessageRequest.setMethod(SalesModuleMethod.CREATE_INVALID_MESSAGE);
-        respondToInvalidMessageRequest.getValidationResults().addAll(validationQualityAnalysis);
-        respondToInvalidMessageRequest.setMessageValidationStatus(FLUXGPResponseMapper.map(validationResultDto));
+        respondToInvalidMessageRequest.getValidationQualityAnalysises().addAll(validationQualityAnalysis);
         respondToInvalidMessageRequest.setPluginToSendResponseThrough(pluginToSendResponseThrough);
         respondToInvalidMessageRequest.setSender(sender);
         respondToInvalidMessageRequest.setMessageGuid(messageGuid);

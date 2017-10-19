@@ -339,8 +339,8 @@ Schema date:    25July2016
     <xsd:complexType name="SalesBaseRequest" abstract="true">
         <xsd:sequence>
             <xsd:element name="method" type="bat:SalesModuleMethod"/>
-            <xsd:element name="validationResult" type="ram:ValidationQualityAnalysisType" minOccurs="0" maxOccurs="unbounded" />
-            <xsd:element name="messageValidationStatus" type="bat:FLUXGPResponse" minOccurs="0"/>
+            <xsd:element name="validationQualityAnalysis" type="ram:ValidationQualityAnalysisType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="messageValidationStatus" type="xsd:string" minOccurs="0"/>
             <xsd:element name="pluginToSendResponseThrough" type="xsd:string" minOccurs="0" maxOccurs="1" />
         </xsd:sequence>
     </xsd:complexType>
