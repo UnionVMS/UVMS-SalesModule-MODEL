@@ -13,10 +13,7 @@
     <artifactId>sales-model</artifactId>
     <version>1.0.7-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>${project.artifactId}</name>
-
-    <description>Maven project-archetype for UnionVMS Model</description>
 
     <properties>
         <junit.version>4.12</junit.version>
