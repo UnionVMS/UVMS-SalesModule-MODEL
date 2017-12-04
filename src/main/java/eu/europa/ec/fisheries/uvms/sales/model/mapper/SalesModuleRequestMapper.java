@@ -11,7 +11,8 @@ public class SalesModuleRequestMapper {
 
     private SalesModuleRequestMapper() {}
 
-    public static String createSalesReportRequest(String request, String status, List<ValidationQualityAnalysisType> validationQualityAnalysis, String pluginToSendResponseThrough) throws SalesMarshallException {
+    public static String createSalesReportRequest(String request, String status, List<ValidationQualityAnalysisType> validationQualityAnalysis,
+                                                  String pluginToSendResponseThrough) throws SalesMarshallException {
         SalesReportRequest salesReportRequest = new SalesReportRequest();
         salesReportRequest.setReport(checkNotNull(request));
         salesReportRequest.setMethod(SalesModuleMethod.SAVE_REPORT);
@@ -33,30 +34,26 @@ public class SalesModuleRequestMapper {
         return JAXBMarshaller.marshallJaxBObjectToString(salesQueryRequest);
     }
 
-    public static String createRespondToInvalidMessageRequest(String messageGuid, List<ValidationQualityAnalysisType> validationQualityAnalysis, String pluginToSendResponseThrough, String sender) throws SalesMarshallException {
+    public static String createRespondToInvalidMessageRequest(String messageGuid, List<ValidationQualityAnalysisType> validationQualityAnalysis,
+                                                              String pluginToSendResponseThrough,
+                                                              String sender, SalesIdType salesIdType) throws SalesMarshallException {
+
         RespondToInvalidMessageRequest respondToInvalidMessageRequest =
-                fillRespondToInvalidMessageRequest(messageGuid, validationQualityAnalysis, pluginToSendResponseThrough, sender);
+                fillRespondToInvalidMessageRequest(messageGuid, validationQualityAnalysis, pluginToSendResponseThrough, sender, salesIdType);
 
         return JAXBMarshaller.marshallJaxBObjectToString(respondToInvalidMessageRequest);
     }
 
-    public static String createRespondToInvalidMessageRequest(String messageGuid, List<ValidationQualityAnalysisType> validationQualityAnalysis, String pluginToSendResponseThrough, String sender, String messageGuidSchemeId) throws SalesMarshallException {
-        createRespondToInvalidMessageRequest(messageGuid, validationQualityAnalysis, pluginToSendResponseThrough, sender);
-
-        RespondToInvalidMessageRequest respondToInvalidMessageRequest =
-                fillRespondToInvalidMessageRequest(messageGuid, validationQualityAnalysis, pluginToSendResponseThrough, sender);
-        respondToInvalidMessageRequest.setSchemeId(messageGuidSchemeId);
-
-        return JAXBMarshaller.marshallJaxBObjectToString(respondToInvalidMessageRequest);
-    }
-
-    private static RespondToInvalidMessageRequest fillRespondToInvalidMessageRequest(String messageGuid, List<ValidationQualityAnalysisType> validationQualityAnalysis, String pluginToSendResponseThrough, String sender) {
+    private static RespondToInvalidMessageRequest fillRespondToInvalidMessageRequest(String messageGuid,
+                                                List<ValidationQualityAnalysisType> validationQualityAnalysis,
+                                                     String pluginToSendResponseThrough, String sender, SalesIdType salesIdType) {
         RespondToInvalidMessageRequest respondToInvalidMessageRequest = new RespondToInvalidMessageRequest();
         respondToInvalidMessageRequest.setMethod(SalesModuleMethod.CREATE_INVALID_MESSAGE);
         respondToInvalidMessageRequest.getValidationQualityAnalysises().addAll(validationQualityAnalysis);
         respondToInvalidMessageRequest.setPluginToSendResponseThrough(pluginToSendResponseThrough);
         respondToInvalidMessageRequest.setSender(sender);
         respondToInvalidMessageRequest.setMessageGuid(messageGuid);
+        respondToInvalidMessageRequest.setTypeOfId(salesIdType);
         return respondToInvalidMessageRequest;
     }
 
