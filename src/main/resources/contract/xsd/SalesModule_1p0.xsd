@@ -367,7 +367,7 @@ Schema date:    25July2016
             <xsd:enumeration value="SALES_REPORT"/>
             <xsd:enumeration value="SALES_QUERY"/>
             <xsd:enumeration value="SALES_RESPONSE"/>
-            <xsd:enumeration value="SALES_RESPONSE_REFERENCED_ID"/>
+            <xsd:enumeration value="SALES_REFERENCED_ID"/>
         </xsd:restriction>
     </xsd:simpleType>
 
