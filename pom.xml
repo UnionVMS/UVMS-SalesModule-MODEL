@@ -11,7 +11,7 @@
 
     <groupId>eu.europa.ec.fisheries.uvms.sales</groupId>
     <artifactId>sales-model</artifactId>
-    <version>1.0.10-SNAPSHOT</version>
+    <version>1.0.10</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
 
@@ -204,7 +204,7 @@
     </distributionManagement>
     <scm>
         <connection>${scm.connection}</connection>
-        <tag>HEAD</tag>
+        <tag>sales-model-1.0.10</tag>
     </scm>
 
 </project>
