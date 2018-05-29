@@ -19,6 +19,13 @@
         </xsd:sequence>
     </xsd:complexType>
 
+    <xsd:element name="FLUXResponseMessage" type="rsm:FLUXResponseMessageType"/>
+    <xsd:complexType name="FLUXResponseMessageType">
+        <xsd:sequence>
+            <xsd:element minOccurs="1" name="FLUXResponseDocument" type="ram:FLUXResponseDocumentType" />
+        </xsd:sequence>
+    </xsd:complexType>
+
     <xsd:element name="FLUXSalesQueryMessage" type="rsm:FLUXSalesQueryMessageType"/>
     <xsd:complexType name="FLUXSalesQueryMessageType">
         <xsd:sequence>
