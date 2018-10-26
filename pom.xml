@@ -11,7 +11,7 @@
 
     <groupId>eu.europa.ec.fisheries.uvms.sales</groupId>
     <artifactId>sales-model</artifactId>
-    <version>1.0.11</version>
+    <version>1.0.12</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
 
@@ -74,22 +74,6 @@
                                             <bindingFiles>
                                                 <bindingFile>
                                                     ${basedir}/src/main/resources/bindings/sales-module-bindings.xml
-                                                </bindingFile>
-                                            </bindingFiles>
-                                            <extraargs>
-                                                <extraarg>-xjc-XhashCode</extraarg>
-                                                <extraarg>-xjc-Xequals</extraarg>
-                                                <extraarg>-xjc-XtoString</extraarg>
-                                                <extraarg>-xjc-Xfluent-api</extraarg>
-                                                <extraarg>-p</extraarg>
-                                                <extraarg>http://www.w3.org/2001/XMLSchema=eu.europa.ec.fisheries.schema.sales</extraarg>
-                                            </extraargs>
-                                        </wsdlOption>
-                                        <wsdlOption>
-                                            <wsdl>${basedir}/src/main/resources/contract/ecb-proxy.wsdl</wsdl>
-                                            <bindingFiles>
-                                                <bindingFile>
-                                                    ${basedir}/src/main/resources/bindings/ecb-proxy-bindings.xml
                                                 </bindingFile>
                                             </bindingFiles>
                                             <extraargs>
@@ -204,7 +188,7 @@
     </distributionManagement>
     <scm>
         <connection>${scm.connection}</connection>
-        <tag>sales-model-1.0.11</tag>
+        <tag>sales-model-1.0.12</tag>
     </scm>
 
 </project>
