@@ -2,16 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>fish.focus.uvms.maven</groupId>
-		<artifactId>uvms-pom</artifactId>
-		<relativePath />
-		<version>1.14</version>
-	</parent>
+  <parent>
+    <groupId>eu.europa.ec.fisheries.uvms</groupId>
+    <artifactId>mare-pom</artifactId>
+    <version>1.6.0-MARE</version>
+    <relativePath />
+  </parent>
 
     <groupId>eu.europa.ec.fisheries.uvms.sales</groupId>
     <artifactId>sales-model</artifactId>
-    <version>1.0.13-SNAPSHOT</version>
+    <version>${uvms.sales.model.version}</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
 
