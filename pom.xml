@@ -172,6 +172,11 @@
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>eu.europa.ec.fisheries.uvms.commons</groupId>
+            <artifactId>uvms-commons-xml</artifactId>
+            <version>${uvms.commonsLibrary.version}</version>
+        </dependency>
     </dependencies>
 
     <distributionManagement>
